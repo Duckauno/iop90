@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "name": "portfolio",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "regions": ["sfo1"],
+  "env": {
+    "MONGODB_URI": "@mongodb-uri",
+    "EMAIL_HOST": "@email-host",
+    "EMAIL_PORT": "@email-port",
+    "EMAIL_USER": "@email-user",
+    "EMAIL_PASS": "@email-pass",
+    "EMAIL_TO": "@email-to",
+    "JWT_SECRET": "@jwt-secret",
+    "ADMIN_USERNAME": "@admin-username",
+    "ADMIN_PASSWORD": "@admin-password",
+    "GITHUB_TOKEN": "@github-token",
+    "GITHUB_USERNAME": "@github-username"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}
